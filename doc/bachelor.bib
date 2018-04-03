@@ -1,20 +1,155 @@
 % -*- coding: utf-8 -*-
-
-@article{Deepbelief,
+@inproceedings{Sarikaya2011Deep,
   title={Deep belief nets for natural language call-routing},
-  author={R Sarikaya and GE Hinton and B Ramabhadran},
-  conference={IEEE International Conference on Acoustics, Speech and Signal Processing},
-  volume={125},
+  author={Sarikaya, Ruhi and Hinton, Geoffrey E. and Ramabhadran, Bhuvana},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing},
   pages={5680-5683},
   year={2011},
+ keywords={RBM;Call-Routing;Deep Learning;DBN},
 }
 
-@article{SVM,
-  title={Optimizing SVMs for complex call classification},
-  author={Haffner P and  Tur G and Wright J H},
-  conference={IEEE International Conference on Acoustics, Speech, and Signal Processing},
-  volume={1},
-  pages={632,635},
-  year={2003},
+@article{SlocumMachine,
+  title={Machine Translation at Texas: The Early Years},
+  author={Slocum, Jonathan and Lehmann, Winfred P.},
+  journal={University of Texas at Austin Linguistics Research Center},
 }
+
+@article{Pardelli2008From,
+  title={From Weaver to the ALPAC Report},
+  author={Pardelli, Gabriella and Sassi, Manuela and Goggi, Sara},
+  year={2008},
+}
+
+@article{Earley1970An,
+  title={An efficient context-free parsing algorithm},
+  author={Earley, Jay},
+  journal={Comm Acm},
+  volume={26},
+  number={1},
+  pages={57-61},
+  year={1970},
+ keywords={compilers;computational complexity;context-free grammar;parsing;syntax analysis},
+ abstract={Translation from Commun. ACM 13, 94‒102 (1970; Zbl 0185.43401).},
+}
+
+@misc{Bangalore2010Sequence,
+  title={Sequence classification for machine translation},
+  author={Bangalore, Srinivas and Haffner, Patrick and Kanthak, Stephan},
+  publisher={US},
+  year={2010},
+ abstract={Classification of sequences, such as the translation of natural language sentences, is carried out using an independence assumption. The independence assumption is an assumption that the probability of a correct translation of a source sentence word into a particular target sentence word is independent of the translation of other words in the sentence. Although this assumption is not a correct one, a high level of word translation accuracy is nonetheless achieved. In particular, discriminative training is used to develop models for each target vocabulary word based on a set of features of the corresponding source word in training sentences, with at least one of those features relating to the context of the source word. Each model comprises a weight vector for the corresponding target vocabulary word. The weights comprising the vectors are associated with respective ones of the features; each weight is a measure of the extent to which the presence of that feature for the source word makes it more probable that the target word in question is the correct one.},
+}
+
+@article{Chen2011Maximum,
+  title={Maximum Entropy Principle for Uncertain Variables},
+  author={Chen and Xiaowei and Dai and Wei},
+  journal={International Journal of Fuzzy Systems},
+  volume={13},
+  number={3},
+  pages={232-236},
+  year={2011},
+ keywords={Uncertain variable;entropy;maximum entropy principle},
+ abstract={Abstract The concept of uncertain entropy is used to provide a quantitative measurement of the uncertainty associated with uncertain variables. After introducing the definition, this paper gives some examples of entropy of uncertain variables. Furthermore this paper proposes the maximum entropy principle for uncertain variables, that is, out of all the uncertainty distributions satisfying given constraints, to choose the one has maximum entropy.},
+}
+
+@article{Ravuri2015Recurrent,
+  title={Recurrent Neural Network and LSTM Models for Lexical Utterance Classification},
+  author={Ravuri, Suman and Stolcke, Andreas},
+  year={2015},
+}
+
+@article{Mesnil2013Investigation,
+  title={Investigation of recurrent-neural-network architectures and learning methods for spoken language understanding},
+  author={Mesnil, G. and He, X. and Deng, L. and Bengio, Y.},
+  journal={Interspeech},
+  year={2013},
+}
+
+@book{Graves2012Long,
+  title={Long Short-Term Memory},
+  author={Graves, Alex},
+  publisher={Springer Berlin Heidelberg},
+  pages={1735-1780},
+  year={2012},
+ keywords={Long short-term memory, Artículo},
+ abstract={As discussed in the previous chapter, an important benefit of recurrent neural networks is their ability to use contextual information when mapping between input and output sequences. Unfortunately, for standard RNN architectures, the range of context that can be in practice accessed is quite limited. The problem is that the influence of a given input on the hidden layer, and therefore on the network output, either decays or blows up exponentially as it cycles around the network鈥檚 recurrent connections. This effect is often referred to in the literature as the vanishing gradient problem  (Hochreiter, 1991; Hochreiter et al., 2001a; Bengio et al., 1994). The vanishing gradient problem is illustrated schematically in Figure 4.1},
+}
+
+@article{Tai2015Improved,
+  title={Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks},
+  author={Tai, Kai Sheng and Socher, Richard and Manning, Christopher D.},
+  journal={Computer Science},
+  volume={5},
+  number={1},
+  pages={: 36.},
+  year={2015},
+ keywords={Computer Science - Computation and Language;Computer Science - Artificial Intelligence;Computer Science - Learning},
+ abstract={Abstract:  Because of their superior ability to preserve sequence information over time, Long Short-Term Memory (LSTM) networks, a type of recurrent neural network with a more complex computational unit, have obtained strong results on a variety of sequence modeling tasks. The only underlying LSTM structure that has been explored so far is a linear chain. However, natural language exhibits syntactic properties that would naturally combine words to phrases. We introduce the Tree-LSTM, a generalization of LSTMs to tree-structured network topologies. Tree-LSTMs outperform all existing systems and strong LSTM baselines on two tasks: predicting the semantic relatedness of two sentences (SemEval 2014, Task 1) and sentiment classification (Stanford Sentiment Treebank).},
+}
+
+@article{Bahdanau2014Neural,
+  title={Neural Machine Translation by Jointly Learning to Align and Translate},
+  author={Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
+  journal={Computer Science},
+  year={2014},
+ keywords={Computer Science - Computation and Language;Computer Science - Learning;Computer Science - Neural and Evolutionary Computing;Statistics - Machine Learning},
+ abstract={Abstract:  Neural machine translation is a recently proposed approach to machine translation. Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance. The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation. In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly. With this new approach, we achieve a translation performance comparable to the existing state-of-the-art phrase-based system on the task of English-to-French translation. Furthermore, qualitative analysis reveals that the (soft-)alignments found by the model agree well with our intuition.},
+}
+
+@article{Rumelhart1986Learning,
+  title={Learning internal representations by error propagation: Parallel Distributed Processing, Volume 1: Foundations},
+  author={Rumelhart, D. E. and Hinton, G. E. and Williams, R. J.},
+  year={1986},
+}
+
+@inproceedings{Turian2010Word,
+  title={Word representations: a simple and general method for semi-supervised learning},
+  author={Turian, Joseph and Ratinov, Lev and Bengio, Yoshua},
+  booktitle={ACL 2010, Proceedings of the  Meeting of the Association for Computational Linguistics, July 11-16, 2010, Uppsala, Sweden},
+  pages={384-394},
+  year={2010},
+ abstract={ABSTRACT  If we take an existing supervised NLP sys- tem, a simple and general way to improve accuracy is to use unsupervised word representations as extra word features. We evaluate Brown clusters, Collobert and Weston (2008) embeddings, and HLBL (Mnih & Hinton, 2009) embeddings of words on both NER and chunking. We use near state-of-the-art supervised baselines, and find that each of the three word representations improves the accu- racy of these baselines. We find further improvements by combining di erent word representations. You can download our word features, for o -the-shelf use in existing NLP systems, as well as our code, here: http://metaoptimize. com/projects/wordreprs/},
+}
+
+@article{Mikolov2013Distributed,
+  title={Distributed Representations of Words and Phrases and their Compositionality},
+  author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
+  volume={26},
+  pages={3111-3119},
+  year={2013},
+ keywords={Computer Science - Computation and Language;Computer Science - Learning;Statistics - Machine Learning},
+ abstract={Abstract:  The recently introduced continuous Skip-gram model is an efficient method for learning high-quality distributed vector representations that capture a large number of precise syntactic and semantic word relationships. In this paper we present several extensions that improve both the quality of the vectors and the training speed. By subsampling of the frequent words we obtain significant speedup and also learn more regular word representations. We also describe a simple alternative to the hierarchical softmax called negative sampling. An inherent limitation of word representations is their indifference to word order and their inability to represent idiomatic phrases. For example, the meanings of "Canada" and "Air" cannot be easily combined to obtain "Air Canada". Motivated by this example, we present a simple method for finding phrases in text, and show that learning good vector representations for millions of phrases is possible.},
+}
+
+@inproceedings{Pennington2014Glove,
+  title={Glove: Global Vectors for Word Representation},
+  author={Pennington, Jeffrey and Socher, Richard and Manning, Christopher},
+  booktitle={Conference on Empirical Methods in Natural Language Processing},
+  pages={1532-1543},
+  year={2014},
+ abstract={Recent methods for learning vector space representations of words have succeeded in capturing fine-grained semantic and syntactic regularities using vector arith- metic, but the origin of these regularities has remained opaque. We analyze and make explicit the model properties needed for such regularities to emerge in word vectors. The result is a new global log- bilinear regression model that combines the advantages of the two major model families in the literature: global matrix factorization and local context window methods. Our model efficiently leverages statistical information by training only on the nonzero elements in a word-word co- occurrence matrix, rather than on the en- tire sparse matrix or on individual context windows in a large corpus. The model pro- duces a vector space with meaningful sub- structure, as evidenced by its performance of 75% on a recent word analogy task. It also outperforms related models on simi- larity tasks and named entity recognition.},
+}
+
+@article{Hays1960Grouping,
+  title={Grouping and dependency theories.},
+  author={Hays, David G},
+  journal={In H. P. Edmundson (Ed.), Proceedings of the National Symposium on Machine Translation. Englewood Cliffs, N. J.: Prentice-Hall},
+  year={1960},
+ keywords={GROUPS(MATHEMATICS;TOPOLOGY;TOPOLOGY;GROUPS(MATHEMATICS;LANGUAGE;TOPOLOGY;MACHINE TRANSLATION;VOCABULARY;SET THEORY},
+ abstract={Immediate-constituent analysis and dependency analysis (two theories of syntactic description) are based, respectively, on the topologies of grouping and of trees. A correspondence between structures of the two types is defined, and the two topologies are compared, mainly in terms of their empirical applications. (Author)},
+}
+
+@article{The,
+  title={The Stanford NLP (Natural Language Processing) Group},
+}
+
+@article{Kingma2014Adam,
+  title={Adam: A Method for Stochastic Optimization},
+  author={Kingma, Diederik and Ba, Jimmy},
+  journal={Computer Science},
+  year={2014},
+ keywords={Computer Science - Learning},
+ abstract={Abstract:  We introduce Adam, an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. The method is also appropriate for non-stationary objectives and problems with very noisy and/or sparse gradients. The hyper-parameters have intuitive interpretations and typically require little tuning. Some connections to related algorithms, on which Adam was inspired, are discussed. We also analyze the theoretical convergence properties of the algorithm and provide a regret bound on the convergence rate that is comparable to the best known results under the online convex optimization framework. Empirical results demonstrate that Adam works well in practice and compares favorably to other stochastic optimization methods. Finally, we discuss AdaMax, a variant of Adam based on the infinity norm.},
+}
+
 
