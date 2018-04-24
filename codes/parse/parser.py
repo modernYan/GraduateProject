@@ -14,7 +14,7 @@ class ParseSentence:
     def __init__(self, has_parsed=False):
         self.has_parsed = has_parsed
         if has_parsed:
-            with open(ROOT_PATH + 'parse/parse.pkl', 'rb') as f:
+            with open(ROOT_PATH + '/parse/parse.pkl', 'rb') as f:
                 self.sentence_dic = pickle.load(f)
         else:
             self.sentence_dic = {}
@@ -51,7 +51,7 @@ class ParseSentence:
             self._parse_one_batch(batch)
         for batch in tqdm(val_iter):
             self._parse_one_batch(batch)
-        with open(ROOT_PATH + 'parse/parse.pkl', 'wb') as f:
+        with open(ROOT_PATH + '/parse/parse.pkl', 'wb') as f:
             pickle.dump(self.sentence_dic, f)
 
     def _parse_one_batch(self, batch):

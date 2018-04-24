@@ -6,7 +6,7 @@ import re
 
 from codes.config import BATCH_SIZE, ROOT_PATH
 
-glove = vocab.GloVe(name='6B', dim=100, cache=ROOT_PATH + '.vector_cache')
+glove = vocab.GloVe(name='6B', dim=100, cache=ROOT_PATH + '/.vector_cache')
 
 
 def clean_str(string):
@@ -22,7 +22,7 @@ TITLE = data.Field(lower=True, sequential=True, include_lengths=True, preprocess
 LABELS = data.Field(sequential=False, use_vocab=False, batch_first=True)
 
 train, val, test = data.TabularDataset.splits(
-    path=ROOT_PATH + 'ag_news_csv/', train='train.csv',
+    path=ROOT_PATH + '/ag_news_csv/', train='train.csv',
     validation='dev.csv', test='test.csv', format='csv',
     fields=[('label', LABELS), ('title', TITLE), ('text', TEXT)])
 

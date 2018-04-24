@@ -20,7 +20,7 @@ class TrainModel:
         self.model = model
         self.max_dev_accuracy = 0.0
         self.saved_model_path = './saved_model/{}.pkl'.format(model.__class__.__name__)
-        self.calculate_dev_step = 20
+        self.calculate_dev_step = 100
         self.parsentence = ParseSentence(has_parsed=True)
         print('model init successfully\nThe model is the following:')
         pprint(model)
