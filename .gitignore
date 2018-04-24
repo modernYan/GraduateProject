@@ -1,1 +1,9 @@
 .DS_Store
+.idea/GraduateProject.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+codes/__pycache__/
+codes/model/__pycache__/
+codes/parse/__pycache__/

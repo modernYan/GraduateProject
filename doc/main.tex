@@ -1,18 +1,10 @@
-%% 使用 jnuthesis 文档类生成南京大学学位论文的示例文档
-%%
-%% 作者：胡海星，starfish (at) gmail (dot) com
-%% 项目主页: http://haixing-hu.github.io/jnu-thesis/
-%%
-%% 本样例文档中用到了吕琦同学的博士论文的提高和部分内容，在此对他表示感谢.
-%%
-
 %% jnuthesis 文档类的可选参数有：
 %%   nobackinfo 取消封二页导师签名信息.注意，按照南大的规定，是需要签名页的.
 %%   phd/master/bachelor 选择博士/硕士/学士论文
 
 % 使用 blindtext 宏包自动生成章节文字
 % 这仅仅是用于生成样例文档，正式论文中一般用不到该宏包
-\documentclass[bachelor,winfonts]{jnuthesis}
+\documentclass[bachelor,adobefonts]{jnuthesis}
 
 % 本科课程设计课程名称
 \usepackage{graphicx}
@@ -86,15 +78,15 @@
 \begin{abstract}
 自然语言理解是自然语言处理乃至人工智能领域亟待研究重点与难点，
 对其研究在理论上和实际应用上都有重要的意义.
-近几年随着深度学习的发展，基于循环神经网络(RNN)、长短期记忆网络(LSTM)等的序列建模方式已经成为了
+随着深度学习的发展，基于循环神经网络(RNN)、长短期记忆网络(LSTM)等的序列建模方式已经成为了
 自然语言处理的主流方法.
 但是这些深度学习模型需要大规模训练数据，并且将复杂的语言分析和理解
-过程简化成“黒盒子”，难以融合先验语言知识，进而使模型缺乏可解释性.
+过程简化成“黑盒子”，难以融合先验语言知识，进而使模型缺乏可解释性.
 
 本文尝试将先验文本语言学知识引入传统深度学习模型中，提出了融合句法结构的深度神经网络.
 该模型通过依存句法分析工具获得文本的句法子结构，
 然后将文本的语义表示和结构表示分别通过两个独立的LSTM模型，
-将子结构输出的加权平均结果与主文本句子的输出结果相融合，
+再将子结构输出的加权平均结果与主文本句子的输出结果相融合，
 从而实现利用句法结构信息对句子表示增强，最后将这个增强表示送入后续的神经网络中以完成文本分类、机器翻译等文本理解的应用.
 
 通过在文本理解的基础性任务文本分类上进行对照实验，
@@ -102,7 +94,7 @@
 (1)由于引入了语言学知识，在小规模数据集上有明显优势；在大规模数据集上也有一定优势，模型有较好的鲁棒性.
 (2)通过Attention机制可视化文本中不同结构的重要程度，使得模型具有一定的可解释性.
 
-在实验中还对融合模型的Attention机制和融合方式进行了深入的研究.最终在AGNews数据集上，
+在实验中还对融合模型的Attention机制和融合方式开展了进一步的研究.最终在AGNews数据集上，
 融合模型相对于LSTM模型在测试集上的正确率提升了2.5\%.
 
 % 中文关键词.关键词之间用中文全角分号隔开，末尾无标点符号.
@@ -115,25 +107,24 @@
 
 
 \begin{englishabstract}
-Natural language understanding is an urgent research focus and difficulty in the field of natural language processing and artificial intelligence.
+Natural language understanding is an urgent task in the field of natural language processing and artificial intelligence.
 The research is of great significance in both theory and practice.
 In recent years, with the development of deep learning, the sequential modeling methods based on Recurrent Neural Network (RNN) and Long Short Term Memory Network (LSTM) have been established.
-and these model has been the  mainstream way of natural language processing.
-But these deep learning models require massive training data, and the model is all in the black box of the neural network.
-The whole model lacks the interpretability and robustness.
-Moreover, the model ignores the syntactic structure and other linguistic knowledge in the text, which can be used to improve the model.
-
+The mainstream method of natural language processing.
+But these deep learning models require massive training of data and complex language analysis and understanding.
+The process is simplified into “black box”, which is difficult to combine with the prior language knowledge, thus making the model lack of interpretability.
+  
 This paper attempts to introduce the knowledge of prior text linguistics into the traditional deep learning model, and puts forward the deep neural network of syntactic structure.
 This model acquires the syntactic substructure of text by means of the dependency syntactic analysis tool.
-Then the main text sentence and syntactic substructure are respectively adopted by two independent LSTM models.
+Then the semantic representation and structure of the text are represented by two separate LSTM models.
 The weighted average result of the substructure output is combined with the output result of the main text sentence.
-A final fusion representation is obtained, which is then sent to the subsequent neural network to complete the application of text classification, machine translation and other text understanding.
-
+In this way, the sentence is enhanced by using syntactic structure information. Finally, this enhancement is sent to the subsequent neural network to complete the application of text classification, machine translation and other text understanding.
+  
 By conducting a controlled experiment on the basic task text categorization of text comprehension,
-It is concluded that the fusion model has the following advantages compared with the traditional deep learning model:
+It is concluded that the fusion model has two main advantages:
 (1) due to the introduction of linguistic knowledge, there are obvious advantages in the small-scale data set; There are some advantages in large-scale data sets, and the model has good robustness.
 (2) the importance of different structures in the visual text of the Attention mechanism makes the model have certain interpretability.
-
+  
 In the experiment, the Attention mechanism and fusion mode of the fusion model were further studied. Finally, in the AGNews data set,
 The accuracy of the fusion model in the test set was increased by 2.5\% compared with the LSTM model.
 % 英文关键词.关键词之间用英文半角逗号隔开，末尾无符号.
@@ -156,9 +147,11 @@ The accuracy of the fusion model in the test set was increased by 2.5\% compared
 \section{研究背景和意义}
 自然语言处理（Natural Language Processing，NLP）是研究计算机处理人类语言的一门技术，也是人工智能(Artificial Intelligence，AI)最初发展的切入点和当前关注的焦点.
 
-人工智能体系可分为运算智能、感知智能、认知智能三个层次(图1-1).其中，最后的认知智能的发展主要体现为自然语言处理技术的进步.
-如果语言智能够实现突破，与它同属认知智能的知识和推理就会得到长足的发展，进而推动整个人工智能体系进步，让更多的应用场景落地.
-所以自然语言处理技术也被认为是人工智能皇冠上的明珠.
+人工智能整体上自下而上可以分为3个层次，分别是运算智能、感知智能、认知智能.
+最后也是最高级的认知智能主要就表现在自然语言处理水平上.
+如果语言处理理解能够取得突破，认知智能领域中的知识推理也能够获得发展，
+这样就能推动整个人工智能的发展，从而使得更多的应用场景能够落地.
+所以自然语言处理也一直被看成人工智能这个皇冠上的明珠。
 
 而自然语言理解(Natural Language Understanding，NLU)技术则是对语义信息的深层次挖掘和处理，是NLP技术当前研究的重点和难点.
 广义的自然语言理解可以分为两类，第一类是针对口语内容的理解，如语音识别，语音解析和语音合成；
@@ -171,29 +164,33 @@ The accuracy of the fusion model in the test set was increased by 2.5\% compared
   \caption{人工智能，自然语言处理，自然语言理解和文本理解的关系}
 \end{figure}
 
-文本理解技术是众多高级NLP应用不合或缺的一项核心技术，这些应用包括文本分类、信息抽取、自动摘要、机器翻译、问答系统等.
+文本理解技术是众多高级NLP应用不合或缺的一项核心技术，
+这些应用包括文本自动分类、结构化信息抽取、长文本自动摘要、
+机器翻译、问答系统等.
 
-(1)文本分类：文本分类是文本处理中的一个重要模块，它的应用也非常广泛，比如：垃圾过滤、新闻分类、词性标注等.
-它和其他的分类没有本质的区别，核心方法为首先提取分类数据的特征，然后选择最优的匹配，从而分类.
+(1)文本分类：文本分类是文本理解最为基础性的应用也是最为广泛应用的应用.
+例如：对垃圾邮件进行过滤，自动对新闻进行主题分类和文本情感色彩识别等.
+这个应用核心步骤主要包括:文本的特征提取和类别最优匹配.
 
 (2)信息抽取:信息抽取 是把文本里包含的信息进行结构化处理，变成表格一样的组织形式.
 输入信息抽取系统的是原始文本，输出的是固定格式的信息点.
 信息点从各种各样的文档中被抽取出来，然后以统一的形式集成在一起.
 
-(3)自动摘要:随着近几年文本信息的爆发式增长，人们每天能接触到海量的文本信息，如新闻、博客、聊天、报告、论文、微博等.
-从大量文本信息中提取重要的内容，已成为我们的一个迫切需求，而自动文本摘要就提供了一个高效的解决方案，
+(3)自动摘要:随着互联网的高速发展，随着而来的文本信息量也在几何倍的曾在，人们每天
+疲于面对微博、短信、文摘、微信等海量的文本信息.
+而自动文本摘要就提供了一个高效的解决方案，
 可以从原文本中提炼出简洁而重要的信息.
 
-(4)机器翻译:机器翻译，又称为自动翻译，是利用计算机将一种自然语言(源语言)转换为另一种自然语言(目标语言)的过程.
-它是计算语言学的一个分支，是人工智能的终极目标之一，具有重要的科学研究价值.
-同时，机器翻译又具有重要的实用价值.随着经济全球化及互联网的飞速发展，机器翻译技术在促进政治、经济、文化交流等方面起到越来越重要的作用.
+(4)机器翻译:机器翻译是程序化得将源语言和目标语言之间进行自动转换的过程，
+这是自然语言发展的起点也是最终的目标.这项应用，不仅具有很高的学术研究价值，
+同时面对全球化的发展，机器翻译将会极大的促进不同语言的人进行经济、文化和政治等多方面的交流.
 
-(5)问答系统:问答系统是信息检索系统的一种高级形式，它能用准确、简洁的自然语言回答用户用自然语言提出的问题.
+(5)问答系统:问答系统本质上是最为高级的搜索方式，它能用准确、简洁的自然语言回答用户用自然语言提出的问题.
 这种交互一直认为是最自然的人机交互方式，随着苹果Siri，微软Cortana，天猫智能客服的推出，智能问答系统成为备受关注的热点研究方向.
 
-(6)舆情分析:舆情是指社会空间中群众对社会事件发生，发展，变化持有的态度、意见、情绪等表现的总和.
-网络中的舆情主要来源包括微博，BBS论坛，新闻评论等.显然舆情分析是一项复杂的综合性技术，涉及到网络文本内容挖掘，
-观点意见挖掘等.
+(6)舆情分析:舆情是指社会空间中群众对社会事件的产生、发展、结果的评价、态度、感情的综合体现.
+舆情的来源现阶段主要是互联网，包括贴吧、论坛、微博等平台.
+舆情分析涉及到网络文本内容挖掘，观点意见挖掘，所以是个综合性的复杂技术.
 
 \begin{figure}[h!]
   \centering
@@ -231,35 +228,38 @@ The accuracy of the fusion model in the test set was increased by 2.5\% compared
 \subsection{文本理解的早期发展}
 文本内容理解的研究最早是从1954年的Georgetown大学的机器翻译系统\cite{SlocumMachine}研发开始的，
 但是一开始是通过制定规则的语法入手，所以在系统构建上有很大的局限性，带来了翻译质量的低劣.
-随着研究的深入，基于规则的思路面临越来越多的困难.1966年，美国科学院语言自动处理委员会(Automatic Language Processing Advisory Committee)
-公布了一个题为《语言与机器》的报告(简称ALPAC报告\cite{Pardelli2008From})，该报告全面否定了机器翻译的可行性，并建议停止对机器翻译项目的资金支持.
+随着研究的深入，基于规则的思路面临越来越多的困难.
+1966年，美国科学院下属的语言自动处理委员会(Automatic Language Processing Advisory Committee)
+经过3年的研究发布了《语言与机器》的研究结论报告\cite{Pardelli2008From}，
+在这个报告中首次全面批判了机器翻译的研究可行性，并在报告中不建议政府继续支持机器翻译的研究.
 
 此后一段时间对与机器翻译的研究跌倒了谷底，但是研究者仍然坚持对计算语言的理论进行研究，并产生了很多非常重要的研究成果，
 比如在句法研究上1969年J.Earley提出的Earley句法分析算法\cite{Earley1970An}等，在语义分析上1966年C.J.Filmore提出的格语法等.
 
 
-直到80年代后期，人们通过构建语料库，把基于语料库的统计方法引入到自然语言处理中，
-尤其是把已经在语音识别中取得成功的隐马尔可夫模型(Hidden Markov Model，HMM)\cite{Bangalore2010Sequence}引入到自然语言处理上，
-起到了推波助澜的效果，很多人开始通过在大规模语料库上运用统计机器学习方法，并量化的评价和比较各种评价方法的性能.
+直到80年代后期，人们通过构建语料库，开始在自然语言处理中尝试统计学的方法，
+尤其是把隐马尔可夫模型(Hidden Markov Model，HMM)从语音处理上引入到语言处理上，
+这起到了推波助澜的作用，从而越来越多人开始通过在大规模语料库上运用统计机器学习方法，并量化的评价和比较各种评价方法的性能.
 
 
 此后自然语言处理领域的研究从基于规则方法转到基于统计的方法.
 
 \subsection{文本理解的研究现状}
 Ruhi Sarikaya在2011年指出一个自然语言理解系统包括3个任务：
-领域识别(domain detection)，意图分类(intent determination)和属性抽取(slot filling)\cite{Sarikaya2011Deep}，
+领域识别(domain detection)，意图分类(intent determination)和属性抽取(slot filling)\cite{Tur2011Spoken}，
 它们是一个连续的过程，首先识别文本领域，之后对用户意图进行分类，最后实现属性抽取.
 
-从技术上讲，领域识别和意图分类是一个分类问题，通常使用传统的分类算法实现，
-如2003年Haffner等人\cite{Bangalore2010Sequence}提出的支持向量机(Support Vector Machine，SVM)和
+
+从技术上讲，领域识别和意图分类本质上是一个分类问题，通常使用传统的分类算法实现，
+如2003年Haffner等人\cite{Haffner2003Optimizing,Chelba2003Speech,Chen2015Deriving}提出的支持向量机(Support Vector Machine，SVM)和
 Chelba等人\cite{Chen2011Maximum}提出的最大熵算法(Maximum Entropy Classifier).
 2014年Chen等人\cite{Ravuri2015Recurrent}提出也可以采用神经网络(Neural Network Classifier)来解决该问题.
 而对于属性抽取则可以认为是一个序列标注问题，可以运用隐马尔可夫模型
-和条件随机场(Conditional Random Field，CRF) 模型解决.
+和条件随机场(Conditional Random Field，CRF) 模型\cite{Pieraccini1992A,Wang2005Spoken}解决.
 
 随着深度学习的发展，神经网络模型也被应用来处理领域识别和意图分类问题.
-值得注意的是，Ravuri 和Stolcke 在2015年提出可采用循环神经网络(Recurrent Neural Network，RNN)来解决意图分类问题.
-而对于属性抽取，可通过深度学习来提取特征并与传统的CRF相结合.Mesnil也尝试使用RNN进行序列标注以实现属性抽取\cite{Mesnil2013Investigation}.
+值得注意的是，Ravuri 和Stolcke 在2015年提出可采用循环神经网络(Recurrent Neural Network，RNN)来解决意图分类问题\cite{Sarikaya2011Deep,Tur2016Towards}.
+而对于属性抽取，可通过深度学习来提取特征并与传统的CRF相结合\cite{Xu2014Convolutional}.Mesnil也尝试使用RNN进行序列标注以实现属性抽取\cite{Mesnil2013Investigation}.
 
 循环神经网络经过实验证明在对序列化建模上效果显著，能够利用和记忆上下文信息，在几乎所有的NLP任务上都有很好的表现.
 但是循环神经网络在反向传播求解的过程中会出现梯度消失和梯度爆炸的问题，所以对于长文本建模效果不佳.
@@ -269,16 +269,18 @@ Chelba等人\cite{Chen2011Maximum}提出的最大熵算法(Maximum Entropy Class
 
 目前以RNN为代表的深度学习模型已经成为了自然语言理解研究的主流方法.
 
-但是上述研究均需要大量训练数据，并且一切都处于深度神经网络的黑盒中，使整个模型缺乏必要的直观性和鲁棒性.
-而且最重要的是这种模型忽略了句子中的结构信息及语言学知识，而这些知识是可以用来辅助提升模型的，比如对于训练语料库中未出现的句子的词序列标注.
+但是这种方式的研究需要大规模的训练数据，并且将复杂的语言分析和理解过程简化成“黑盒子”，
+模型中难以融合语言学知识，从而使整个模型缺乏很好的可解释性和鲁棒性.
+这些被忽略的句子结构信息和其他语言学知识知识是可以用来辅助提升模型的，比如对于训练语料库中未出现的句子的词序列标注\cite{Deoras2013Deep}.
 
-因此将语言的先验知识融入深度学习可以提高框架的可解释性和鲁棒性，将是 NLP 未来发展的重要方向.
+Liu与Chen分别在2013年\cite{Liu2014Query}和2015年\cite{Chen2015Matrix}，提出通过对句子中语言学知识进行编码可以提升文本理解能力，提取出来的句法结构特征和语义依存信息能够提高模型的理解力，并在多个领域均取得了更好的文本理解效果.
+但是目前已有的融合语言学知识和深度学习的方案，都是将语言学知识作为额外的特征输入到神经网络中，然后训练模型进行词序列标注。这样同样会产生一些局限性，包括较差的归纳性和错误信息会在网络中持续传播.
 
+因此NLP未来发展的重要方向将会是通过引入语言本身的语言学知识，来使模型具备好的可解释性和鲁棒性.
 
-
-\section{论文主要工作和贡献}
+\section{论文主要工作}
 本文围绕研究将语言中的先验知识与深度学习模型进行有机融合，提出了融合依存句法结构的深度神经网络，并基于文本分类任务，研究融合模型的效果.
-具体来说，本文的研究内容可以归纳为以下几个方面.
+具体来说，本文的研究内容有下面几个方向.
 
 (1)通过斯坦福句法分析工具，构建文本的依存句法树，解析出子文本结构.
 
@@ -289,7 +291,7 @@ Chelba等人\cite{Chen2011Maximum}提出的最大熵算法(Maximum Entropy Class
 (3)研究了文本结构的Attention机制和融合方式对模型效果的影响，并选择最佳的Attention和融合方式.
 
 \section{论文结构安排}
-本论文总共分为五个部分，各章节具体安排如下：
+本论文总共分为五个章节，每个章节的内容概括如下：
 
 (1)第一章为绪论，首先介绍了文本理解的研究背景及意义，然后介绍了该领域的研究发展和 现状，并且简单描述了本文的研究内容，最后给出了全文的结构安排.
 
@@ -344,30 +346,34 @@ Chelba等人\cite{Chen2011Maximum}提出的最大熵算法(Maximum Entropy Class
   \caption{8维独热词向量表示}\label{table:3t1}
 \end{table}
 
-这种表示方案如果采用稀疏方式存储，会是非常的简洁：也就是给每个词分配一个数字ID.
-比如刚才的例子中，音乐记为2，摇滚记为5(从0开始记)，如果要编程实现的话，用Hash表给每个词分配一个编号即可.
-这么简洁的表示方法配合上最大熵、SVM、CRF等算法已经很好地完成了NLP领域的各种主流任务了.
+通过稀疏的方式存储这种表示会非常的简单.
+也就是给每个单词分配一个数字ID,如示例中的音乐为2，摇滚乐5(从0开始).
+所以在编程中构建一个ID-单词的哈希表，这种方案效率是O(1)，结合成熟的
+SVM、CRF、最大熵等机器学习算法就能在很多主流的NLP任务上取得很好的效果了.
 
-但是这种表示方法也存在一个重要的问题就是“词汇鸿沟”现象：任意两个词之间都是孤立的，词向量之间都是正交.
-光从两个向量中看不出两个词是否有关系，比如例子中的音乐和摇滚在语义上是相关的，但这种相关性无法从词向量上体现出来.
+然而这种方案有个非常的大弊端，也就是所谓的“词汇鸿沟”：
+任意两个词的词向量之间都是正交，也就是说明词与词之间是彼此独立的.
+如果仅仅通过词向量无法看出两个词语义上的关系.比如例子中的音乐和摇滚在语义上是相关的，但这种相关性无法从词向量上体现出来.
 
 \subsection{分布式表示}
 为了解决独热法无法体现语义的问题，Hinton等人\cite{Rumelhart1986Learning}在1986年提出了一种新的表示方法：Distributed representation，也就是“分布式表示”.
-基本思想是通过训练将每个词映射成$K$维实数向量($K$一般为模型中的超参数)，通过词之间的距离（比如 cosine 相似度、欧氏距离等）来判断它们之间的语义相似度.
+
+这种表示的基本思想是，构建一个词向量训练模型，通过训练把每个词表示成一个$N$维的向量，其中$N$是一个可调节的参数.
+这样两个词向量之间的距离，比如欧式距离，cosine相似程度就可以用来衡量两个词之间的语义关系.
 
 2003年Bengio\cite{Turian2010Word}提出了一种经典的三层的神经网络“输入层-隐层-输出层”模型来训练词向量.
 其核心思想是：一个给定单词的意思是由它的上下文确定的.
 通过将被预测词的前$n$个词连接后作为神经网络的输入项，最后通过softmax层计算得到改词的词向量表示.
 这种训练得到的词向量有很强的语义相关，
-例如，$V(\mbox{意大利})-V(\mbox{罗马})+V(\mbox{巴黎}) = V(\mbox{法国})$，
-类似的，$V(\mbox{国王})-V(\mbox{男人})+V(\mbox{女人})=V(\mbox{女王})$.
+例如，$V(\mbox{中国})-V(\mbox{北京})+V(\mbox{东京}) = V(\mbox{日本})$，
+类似的，$V(\mbox{王妃})-V(\mbox{女人})+V(\mbox{男人})=V(\mbox{国王})$.
 这样的结果非常振奋人心，但是这个算法对计算要求很高，训练效率较低.
 
 2013年Google的Mikolov等人提出了Word2vec工具包\cite{Mikolov2013Distributed}，里面包括了两种新的词向量模型:
-CBOW(continuous bag of words)模型：给定上下文次，预测是否是中心词
+CBOW(continuous bag of words)模型：给定上下文词，预测是否是中心词
 和skip-gram模型：给定中间词，预测是否是上下文词.
-工具包中还包括了两种高效训练的方法：负采样（negative sampling）和层序softmax(hierarchical softmax).
-Word2vec大受欢迎的原因正是其高效性，Mikolov在论文中指出，一个优化的单机版本一天可训练上千亿词.
+Word2Vec真正出名的是因为模型的高效性，模型中通过引入负样本(negative sample)和层间softmax(hierarchical softmax)
+两种方案大幅度提升了训练效率，在一个单机上就可以完成每天千亿级别词向量的训练.
 
 \begin{figure}[h!]
   \centering
@@ -411,8 +417,8 @@ Word2vec是基于局部上下文进行词向量训练的，所以并没有考虑
   J = \sum_{i,j}^{N}f(X_{i,j})(v_{i}^{T}v_{j}+b_{i}+b_{j}-log(X_{i,j}))^2
 \end{equation}
 
-其中$v_{i}$，$v_{j}$是单词$i$和单词$j$的词向量，
-$b_{i}$，$b_{j}$是两个标量，作者定义的偏差项，
+上式中的$v_{i}$，$v_{j}$表示单词$i$和$j$的词向量，
+$b_{i}$，$b_{j}$是偏差项，是两个标量.
 $N$是词汇表的大小，共现矩阵维度为$N*N$，$f$是权重函数，需要满足一定的非递减性，
 来保证对低频词共现组合不会赋值很大，所以一般$f(X_{i,j})$定义为:
 
@@ -430,18 +436,17 @@ $N$是词汇表的大小，共现矩阵维度为$N*N$，$f$是权重函数，需
 
 
 \section{NLP领域的深度学习模型}
-神经网络模型具备强大的学习能力和拟合能力，在图像，音频，NLP等诸多领域取得了非常好的效果.
+神经网络模型具备强大的学习能力和拟合能力，在图像、音频，NLP等诸多领域取得了非常好的效果.
 NLP领域应用最为广泛的深度学习模型就是循环神经网络RNN和长短期记忆网络LSTM.
 
 \subsection{循环神经网络}
-传统的神经网络并不能做到持续记忆，这也应该是传统神经网络的一个缺陷.
-如果让神经网络对电影中每个时间点的事件进行分类，很明显，传统神经网络不能使用前一个事件去推理下一个事件.
-循环神经网络RNN的出现很好的解决了对序列数据建模的问题.
+传统的神经网络是对一个时间点进行建模，所以不能对时序数据建模.比如对于一个文本进行分类，
+传统神经网络只能对一个单词进行建模，而不能对整个句子进行建模.
+而循环神经网络RNN的出现很好的解决了对序列数据建模的问题.
 
-RNN之所以称为循环神经网路，是因为一个序列当前的输出与前面的输出有关.
-具体的表现形式为网络会对前面的信息进行记忆并应用于当前输出的计算中，
-即隐藏层之间的节点不再无连接而是有连接的，
-也就是说隐藏层的输入不仅包括输入层的输出还包括上一时刻隐藏层的输出.
+循环神经网络，顾名思义，就是当前节点的输出还会作为下一个节点的输入.
+所以神经网络中的隐藏层节点不是彼此独立的，而是相互之间有连接的，
+这样网络就会对整个序列的信息进行记忆，并体现到每个节点的计算中.
 下图是一个典型的RNN结构图:
 
 \begin{figure}[h!]
@@ -450,10 +455,10 @@ RNN之所以称为循环神经网路，是因为一个序列当前的输出与�
   \caption{RNN结构图}
 \end{figure}
 
-如图所示，把循环神经网络进行展开成一个全神经网络.
-例如，对一个包含3个单词的语句，那么展开的网络便是一个有3层神经网络，每一层代表一个单词.
-其中$x_{t}$表示第$t$步的输入，$s_{t}$为隐藏层的第$t$步的状态，它是网络的记忆单元.
-$s_{t}$根据当前输入层的输出与上一步隐藏层的状态进行计算，$o_{t}$是第t步的输出.
+如图所示，可以将循环神经网络按照序列展开成一个全连接的神经网络.
+比如对以一个仅有3个单词构成的句子，那么就可以展开形成一个3层神经网络，网络中的每一个就表示一个单词.
+一般的对于第$t$步，$x_{t}$表示输入，$o_{t}$表示输出.
+$s_{t}$表示隐藏层的状态，这是$x_{t}$和$o_{t-1}$计算而来的，是网络中的记忆模块.
 
 \begin{equation}
   \left\{
@@ -465,9 +470,9 @@ $s_{t}$根据当前输入层的输出与上一步隐藏层的状态进行计算�
 \end{equation}
 
 上式中的$f$表示非线性的激活函数，如$tanh$，$ReLU$.
-需要注意的是：在RNN中，每输入一步，每一层各自都共享参数$U$,$V$,$W$.
-其反映着RNN中的每一步都在做相同的事，只是输入不同，
-因此大大地降低了网络中需要学习的参数，对于RNN的训练同样是误差反向传播算法.
+对于RNN来说整个网络中只有参数$U$,$V$,$W$，所以层之间的参数是共享的，
+也正是如此，这些参数表征了整个序列，并且也使得网路中要学习的参数不会随着序列长度增加而增加，提高了学习效率.
+对于RNN的训练同样是误差反向传播算法.
 
 RNN有4种常见的架构，1 to N、N to 1、N to N和N to M，这4种架构基本可以满足常见的NLP应用.
 
@@ -501,16 +506,21 @@ RNN有4种常见的架构，1 to N、N to 1、N to N和N to M，这4种架构基
 
 (1)1 to N:输入是一个值，输出是一个序列.比如图片标注，输出的X是图像的特征，而输出的y序列是一段句子，或者输入类别x，输出的y是该类别的一串文字.
 
-(2)N to 1:输入是一个序列，输出是一个单独的值.这种结构通常用来处理序列分类问题.如输入一段文字判别它所属的类别，输入一个句子判断其情感倾向等.
+(2)N to 1:输入是一个序列，输出是一个单独的值.这种架构最典型的应用就是分类问题，
+比如输入是一段音频、视频或者文本，输入是属于哪一个类别.
 
-(3)N to N:输入和输出是等长的序列.这种可以作为简单的Char RNN可以用来生成文章，诗歌，甚至是代码.
 
-(4)N to M:这种结构又叫Encoder-Decoder模型，也可以称之为Seq2Seq模型.在实现问题中，我们遇到的大部分序列都是不等长的，如机器翻译中，源语言和目标语言的句子往往并没有相同的长度.
-而Encoder-Decoder结构先将输入数据编码成一个上下文向量c，之后在通过这个上下文向量输出预测序列.
+(3)N to N:这种架构输入和输出均是一个序列的形式，并且长度相等.
+最简单的就是输入一个单词，生成一个单词，也就是CharRNN，通过扩展
+就是用来自动作诗，谱曲甚至写代码.
 
-但是RNN在处理长期依赖（时间序列上距离较远的节点）时会遇到巨大的困难，
-因为计算距离较远的节点之间的联系时会涉及雅可比矩阵的多次相乘，
-这会带来梯度消失（经常发生）或者梯度膨胀（较少发生）的问题.
+(4)N to M:这种架构输入输出同样是一个序列的形式，但是长度可以不相等.
+所以可以称为Seq2Seq模型，也可以认为是编码-解码模型.这种模型相对于NtoN
+更加的一般和实用，因为实际应用中大部分情况输入输出序列是不相等，比如机器翻译就是这类的典型应用.
+
+但是RNN在对长序列建模上会有严重的问题，在反向传播的时候对于距离较远的节点会进行
+雅可比矩阵连乘，这样如果特征值是小于一幂次以后趋向于0，也就造成了“梯度消失”，而如果大于1，那么幂次以后就会趋向于无穷大，
+造成“梯度爆炸”.
 
 \subsection{长短期记忆网络}
 为了解决RNN对长序列建模的困难，研究人员提出了许多解决办法，例如ESN（Echo State Network），
@@ -555,9 +565,8 @@ $\widetilde{c}_{t}$，表示遗忘细胞更新量，由输入门，遗忘门，�
 \section{基于深度学习的依存句法分析}
 \subsection{依存句法的概念}
 1960年基于当时机器翻译的特点，美国语言学家D.GHays提出了依存句法的概念\cite{Hays1960Grouping}.
-这里的“依存”是词与词之间的支配和被配置关系，并且这样的关系是有方向性的，不是对等的.
-在依存结构图中用带有方向的弧表示支配和被支配关系.
-也即指出了词语之间在句法上的搭配关系，这种搭配关系是和语义相关联的.
+这里的“依存”，表示两个词之间的上下级关系，是一种有方向、支配与被支配的关系.
+在依存结构图中用带有方向的弧表示了两个词之间的支配和被支配关系，也指明了这两个词在语义层次的搭配关系.
 比如“I shot an elephant in my pajamas.”的依存句法结构如下图所示.
 
 \begin{figure}[h!]
@@ -568,17 +577,19 @@ $\widetilde{c}_{t}$，表示遗忘细胞更新量，由输入门，遗忘门，�
 
 随着句法理论的发展计算机语言学家罗宾森总结了依存语法的五条定理：
 
-(1)一个句子中存在一个成分称之为根（root），这个成分不依赖于其它成分.
+(1)一个句子中存在一个根节点(Root)，这个节点是不依赖任何其他任何节点的.
 
 (2)其它成分直接依存于某一成分.
 
-(3)任何一个成分都不能依存与两个或两个以上的成分.
+(3)任何一个节点均只能依存于一个成分.
 
-(4)如果A成分直接依存于B成分，而C成分在句中位于A和B之间，那么C或者直接依存于B，或者直接依存于A和B之间的某一成分.
+(4)如果A成分直接依存于B成分，而C成分在句中位于A和B之间，
+那么C可能直接依存B，或者间接依存于A和B中间的某个部分.
 
 (5)中心词两边的成分不存在依存关系.
 
-所以一个句法结构中只有一个根节点，并且可以用树来表示整个结构，如下图所示，树中层次低的节点依存层次高的节点，
+所以一个句法结构中只有一个根节点，并且可以用树来表示整个结构，如下图所示，
+树中节点直接依存其父亲节点，
 也就是树中的父节点支配子节点.
 
 \begin{figure}[h!]
@@ -617,15 +628,11 @@ $e^{t}_{i}$，$e^{l}_{j}$分别表示第$i$个POS标签和第$j$个弧标签，
 
 这个模型提出后，在CoNLL依存句法数据集上一直稳居第一名.具体来说Stanford parser有下面几大优点:
 
-(1)既是一个高度优化的概率上下文无关文法和词汇化依存分析器，也是一个词汇化上下文无关文法分析器.
+(1)通过全面可靠的语料库进行训练，并且已经开发了多个语言，包括英语、中文、葡萄牙语在内的10多种语言.
 
-(2)基于权威可靠的宾州树库（Penn Treebank）作为分析器的训练数据，目前已面向英文、中文、德文、阿拉伯文、意大利文、保加利亚文、葡萄牙文等语种提供句法分析功能.
+(2)是一个高效的分析器，支持多种形式的输出，包括结构的文本输出和树形结构的输出.
 
-(3)提供了多样化的分析输出形式，除句法分析树输出外，还支持分词和词性标注文本输出、短语结构树输出、斯坦福依存关系输出等。
-
-(4)分析器内置了分词工具、词性标注工具、基于自定义树库的分析器训练工具等句法分析辅助程序.
-
-(5)通过设置不同的运行参数，可实现句法分析模型选择、自定义词性标记集、文本编码设置和转换、语法关系导入和导出等功能的定制.
+(3)分析器内置了众多的NLP工具，包括分词、词法标注等.
 
 在使用上Stanford Parser是给予Java语言开发的，也提供了多个语言的变成接口，
 并且还可以以服务的方式运行，提供API调用.
@@ -810,7 +817,8 @@ $h$是子结构加权平均的结构，可以用来表现句子依存句法结�
 句法结构的Attention机制是为了计算出哪个子结构对文本的理解更重要.
 所以通过引入Attention机制，可以让网络学习出文本中对整个文本内容相对核心的子结构.
 如上一节所说，主要是讨论如何构建打分函数，
-得到了当前子结构$m_{i}$，$m_{i} \in \mathbb{R}^{H_{sub}}$与源文本$u$，$u \in \mathbb{R}^{H_{main}}$相关度的评分，然后使用softmax公式，将这个相关度转化为概率的形式，就完成了整个Attention机制.
+得到了当前子结构$m_{i}$，$m_{i} \in \mathbb{R}^{H_{sub}}$与源文本$u$，$u \in \mathbb{R}^{H_{main}}$相关度的评分，
+然后采用softmax公式将相关度转换成概率，由此完成了整个Attention机制.
 常见的Attention模型包括:dot Attention、bi-liner Attention和concatention-based Attention.
 
 (1)dot Attention
@@ -850,7 +858,7 @@ $W_{2} \in \mathbb{R}^{d \times H_{main}}$，
 整个打分函数可以表示如下:
 
 \begin{equation}
-  score_{m_{i}} = v^{T}activication(W_{1}m_{i}+W_{2}u+b)
+  score_{m_{i}} = v^{T}activation(W_{1}m_{i}+W_{2}u+b)
 \end{equation}
 
 这里的激活函数一般选择ReLU,tanh即可.
@@ -879,22 +887,30 @@ $W_{2} \in \mathbb{R}^{d \times H_{main}}$，
   o = \alpha u + (1-\alpha)h
 \end{equation}
 
-(2)连接融合
+经验上，$\alpha$和模型效果的关系总体上服从先增加后减少的趋势，
+所以通过实验可以搜索到对于某个特定任务上最佳的值.
 
+(2)连接融合
+连接融合，又可称为串联融合，是把两个向量直接在空间上串行拼接成一个新的向量，
+这样新的向量的维度就是原先的两倍，所以需要在通过压缩矩阵$W$，$W \in \mathbb{R}^{d \times 2d}$，
+把新的向量压缩成原来的维度.值得注意的是，这里的参数的$W$，也是一个需要学习的变量，不是模型设计初期就固定的.
+融合方式具体如下图所示:
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.4\linewidth]{连接融合.png}
   \caption{连接融合}
 \end{figure}
 
-如上图所示，连接融合是将两个向量串联，即$[u,h]$，最后在引入一个维度平衡矩阵$W$,
-将其映射为原先的维度.
+对应到本模型上，连接融合就是是将两个向量串联，即$[u,h]$，最后再左乘$W$,
+将其映射为原先的维度，公式如下:
 
 \begin{equation}
   o = W[u,h]
 \end{equation}
 
-
+相加融合和连接融合是目前广泛应用的两种融合方式，在实践上
+简单易行而且也能获得比较好的融合效果.
+通过融合就能获得文本语义和文本结构的融合表示$o$，进而送入后续的网络中以完成不同的应用.
 
 
 \chapter{实验部分}
@@ -918,9 +934,9 @@ $W_{2} \in \mathbb{R}^{d \times H_{main}}$，
     \textbf{类别} & \textbf{描述} & \textbf{类别} & \textbf{描述}\\
     \midrule
     开发语言 & Python3.6  & 开发框架 & Tensorflow1.2\\
-    操作系统 & Red Hat 4.8.5 & 硬盘大小 & 150 TB \\
-    GPU型号 & NVIDIA TITAN X & 显存大小 & 11 GB \\
-    CPU型号 & Intel E5-2683 v3(56核) & 内存大小 & 600 GB\\
+    操作系统 & CentOS 7.3 & 硬盘大小 & 150 TB \\
+    GPU型号 & NVIDIA TITAN X & 显存大小 & 12 GB \\
+    CPU型号 & Intel E5-2683 v3(14核) & 内存大小 & 600 GB\\
     \bottomrule
   \end{tabular}
   \caption{实验环境}
@@ -953,13 +969,22 @@ $W_{2} \in \mathbb{R}^{d \times H_{main}}$，
 具体来说，一则新闻数据包括标签和文本.例如：
 "3","Surviving Biotech's Downturns","Charly Travers offers advice on withstanding the volatility of the biotech sector."
 这里的3，表示第三类也就是Business类别，对于文本内容，
-由新闻的标题和新闻描述两个部分构成.数据集数据示例如下图所示:
+由新闻的标题和新闻描述两个部分构成.数据集数据示例如下表:
 
-\begin{figure}[h!]
+\begin{table}[h!]
   \centering
-  \includegraphics[width=0.8\linewidth]{数据示例.png}
-  \caption{数据集数据示例}
-\end{figure}
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{类别} & \textbf{标题} & \textbf{内容}\\
+    \midrule
+    1 & Iraqi Conference on Election Plan...& The conference was thrown... \\
+    2 & Funk Still Gets Cup Spot & Though Fred Funk had been ... \\
+    3 & Wall St. Bears Claw Back Into the Black &  NEW YORK (Reuters) - Short-sellers... \\
+    4 & What Is a Comet Made Of? & UC Davis -- A new method for... \\
+    \bottomrule
+  \end{tabular}
+  \caption{数据集示例}
+\end{table}
 
 
 所以需要对文本内容进行一步预处理，首先需要将标题和描述构成一个长的新文本，
@@ -1048,7 +1073,7 @@ $W_{2} \in \mathbb{R}^{d \times H_{main}}$，
     \textbf{模型} & \textbf{开发集最大准确率} & \textbf{测试集准确率} \\
     \midrule
     KNN & 88.70\% & 86.30\% \\
-    SVM & 94.80\% & 87.19\% \\
+    SVM & 94.80\% & 88.19\% \\
     RNN & 87.59\% & 85.60\% \\
     LSTM & 91.00\% & 88.31\% \\
     融合模型 & 94.20\% & 90.50\% \\
@@ -1067,7 +1092,7 @@ LSTM相对于RNN有较大的提升，提高了接近3\%的测试集准确率，
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.45\linewidth]{混淆矩阵.png}
+    \includegraphics[width=0.45\linewidth]{混淆矩阵.png}
   \caption{融合模型分类混淆矩阵}
 \end{figure}
 
@@ -1135,7 +1160,7 @@ LSTM相对于RNN有较大的提升，提高了接近3\%的测试集准确率，
 从上图可以看出，在迭代初期，120次迭代的情况下，融合模型准确率在65\%附近，
 而LSTM在60\%，高出5个百分点；在迭代后期，3800次迭代以后，模型区域稳定，
 可以看到融合模型的准确率一直稳定在92\%在附近，而LSTM模型在稳定在90\%，
-高出2个百分点.所以融合模型在迭代前期和后期均优于LSTM模型，并且在前期迭代效率更高.
+高出2个百分点.所以融合模型在迭代前期和后期均优于LSTM模型.
 
 最后对比模型的训练速度，在训练的过程中，可以预先将每个句子解析成依存句法结构，
 并建立根据文本获得子结构的映射字典，这样获取句法解析的时间复杂度就是O(1).
@@ -1187,9 +1212,11 @@ concatenation-based Attention.实验结果见下表.
 \end{table}
 
 可以看出有无Attention存在明显差距，无Attention在测试集上准确率低于90\%，
-有Attention均高于90\%.在最终结果上concatenation-based Attention获得最佳的结果，
+有Attention均高于90\%.
+所以在引入Attention机制以后，可以捕捉到文本中重要的结构.
+在最终结果上concatenation-based Attention获得最佳的结果，
 准确率测试集准确率达到了90.83\%.
-可以进一步可视化出Attention机制，以句子”NKorea warns Japan against economic sanctions“,为例,
+进一步可视化出Attention机制，以句子“NKorea warns Japan against economic sanctions”,为例,
 其子结构和Attention值如下表:
 
 \begin{table}[h!]
@@ -1215,8 +1242,8 @@ concatenation-based Attention.实验结果见下表.
   \caption{Attention可视化}
 \end{figure}
 
-可以看出在句子中核心重要的词，除去动词warns，就是两个国家名
-NKorea和Japan，所以其分类也是World.
+可以看出句子中最为重要的两个子结构是“warns NKorea”和“warns Japan”.
+除去动词warns，剩下是两个国家名NKorea和Japan，所以其分类也是World.
 通过上面的可视化，使得模型有了很好的解释性.
 
 \subsection{融合方式对比实验}
