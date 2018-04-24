@@ -2,5 +2,4 @@
 .idea/
 codes/model/__pycache__/
 codes/parse/__pycache__/
-codes/.vector_cache/
 codes/__pycache__/
