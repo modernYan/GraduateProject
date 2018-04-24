@@ -26,6 +26,20 @@
 融合模型相对于LSTM模型在测试集上的正确率提升了2.5%.
 
 ## 程序
-基于Pytorch编程实现.
+深度学习部分基于Pytorch框架实现,句法分析部分基于斯坦福分词工具.
+整个代码文件在`codes`文件夹中.
 
-`python main.py`
+`.vector_cache`是Glove词向量文件
+
+`ag_news_csv`是数据集文件，包括训练集、测试集和开发集(从训练集划分的).
+里面的`origin_ag_news_csv`是原始数据集，这里面没有开发集.
+
+`model`是模型文件，包括RNN、LSTM和融合模型
+
+`saved_model`是训练好的模型文件
+
+`config.py`是配置文件
+
+`data.py`是数据集构建文件
+
+`main.py`是主程序入口, 运行`python main.py`
